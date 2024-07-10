@@ -15,12 +15,15 @@ public:
   ShareService();
 
 public slots:
-  QString RegisterService(std::string name, std::vector<std::string> supportedFormats);
+  QString RegisterService(QString name, QStringList supportedFormats);
   QString OpenFile(QString path);
-  QString OpenFileUsingService(std::string path, std::string service);
+  QString OpenFileUsingService(QString path, QString service);
 
 private:
-    std::map<std::string, std::vector<std::string>> formatToService;
+  std::map<QString, std::vector<QString>> formatToService;
+  std::map<QString, QStringList> serviceToFormats;
+
+  QString GetFileFormat(QString filename);
 };
 
 #endif // SHARE_SERVICE_H
