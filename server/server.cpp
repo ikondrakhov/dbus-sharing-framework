@@ -8,6 +8,7 @@
 #include <vector>
 
 #define SERVICE_NAME "com.system.sharing"
+#define INTERFACE_NAME "com.system.sharing"
 
 #ifndef DAEMON_H
 #define DAEMON_H
@@ -64,10 +65,10 @@ int main(int argc, char *argv[]) {
   Sharer daemon;
 
   // Register all slots so that we can access them from another application
-  QDBusConnection::sessionBus().registerObject("/", &daemon,
+  QDBusConnection::sessionBus().registerObject("/", INTERFACE_NAME, &daemon,
                                                QDBusConnection::ExportAllSlots);
 
   return app.exec();
 }
 
-#include "main.moc"
+#include "server.moc"
