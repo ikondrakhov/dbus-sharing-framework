@@ -7,10 +7,10 @@
 
 #include <iostream>
 
-int main(int argc, char **argv)
-{
-    QDBusInterface serviceInterface(SERVICE_NAME, "/");
-    QDBusReply<QString> response = serviceInterface.call("OpenFile", "client path");
-    std::cout << "success" << std::endl;
-    return 1;
+int main(int argc, char **argv) {
+  QDBusInterface serviceInterface(SERVICE_NAME, "/");
+  QDBusReply<QString> response =
+      serviceInterface.call("OpenFile", "client path");
+  std::cout << "success" << std::endl;
+  return 1;
 }
