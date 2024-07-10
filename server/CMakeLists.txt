@@ -2,7 +2,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
 
 PROJECT(server)
 
-SET(SOURCES server.cpp)
+SET(SOURCES server.cpp ShareService.cpp)
 
 SET(CMAKE_AUTOMOC ON)
 
