@@ -1,14 +1,20 @@
 #include "Request.hpp"
 
+#include <QDBusConnection>
+#include <QDBusMessage>
+
 #include <iostream>
 
 void Request::sendErrorResponse(const QString& msg) const {
-    std::cout << msg.toStdString() << std::endl;
-    /*QDBusMessage msg = QDBusMessage::createSignal( ... )
-    QStringList strlist;
-    strlist << "Hello" << "World";
-    msg << QVariant::fromValue( strlist);
-    QDBusConnection::systemBus().send( msg );*/
+    QDBusMessage response_msg =
+        this->_msg.createErrorReply(QDBusError::NotSupported, msg);
+    response_msg << msg;
+    QDBusConnection::sessionBus().send(response_msg);
 }
 
-void Request::sendSuccessResponse() const { std::cout << "Ok" << std::endl; }
+void Request::sendSuccessResponse() const {
+    QDBusMessage response_msg = this->_msg.createReply();
+    QString str = "Ok";
+    response_msg << QVariant::fromValue(str);
+    QDBusConnection::sessionBus().send(response_msg);
+}

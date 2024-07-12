@@ -2,6 +2,7 @@
 #define SHARE_SERVICE_H
 
 #include <QCoreApplication>
+#include <QDBusMessage>
 #include <QDBusVariant>
 #include <QObject>
 #include <QString>
@@ -14,22 +15,22 @@
 #include "Request.hpp"
 
 class SharingService : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
-public:
-  SharingService(
-      int argc, char **argv, std::string serviceName,
-      std::vector<std::string> supportedFormats,
-      std::function<void(const std::string &, const Request &)> callback);
+  public:
+    SharingService(
+        int argc, char** argv, std::string serviceName,
+        std::vector<std::string> supportedFormats,
+        std::function<void(const std::string&, const Request&)> callback);
 
-  int start();
+    int start();
 
-public slots:
-  QString OpenFile(QString path);
+  public slots:
+    void OpenFile(QString path, const QDBusMessage& msg);
 
-private:
-  std::function<void(const std::string &, const Request &)> callback;
-  QCoreApplication app;
+  private:
+    std::function<void(const std::string&, const Request&)> callback;
+    QCoreApplication app;
 };
 
 #endif // SHARE_SERVICE_H
