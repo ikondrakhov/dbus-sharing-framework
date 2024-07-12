@@ -1,0 +1,13 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
+
+PROJECT(share_service_lib_example)
+
+SET(SOURCES server.cpp)
+
+FIND_PACKAGE(Qt5DBus)
+FIND_PACKAGE(sharing_service_lib)
+
+ADD_EXECUTABLE(${PROJECT_NAME} ${SOURCES})
+
+TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PUBLIC ../share_service_lib)
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} Qt5::Core Qt5::DBus sharing_service_lib)
