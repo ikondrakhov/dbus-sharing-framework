@@ -7,10 +7,8 @@ ShareService::ShareService() {}
 
 QString ShareService::RegisterService(QString name,
                                       QStringList supportedFormats) {
-    std::cout << "Formats:" << std::endl;
     for (const QString& format : supportedFormats) {
         this->formatToService[format].push_back(name);
-        std::cout << format.toStdString() << std::endl;
     }
     this->serviceToFormats[name] = supportedFormats;
     std::cout << "Registered service with name: " << name.toStdString()

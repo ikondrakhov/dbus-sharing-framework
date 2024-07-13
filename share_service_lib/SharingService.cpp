@@ -28,7 +28,6 @@ SharingService::SharingService(
         exit(1);
     }
 
-    // Register all slots so that we can access them from another application
     QDBusConnection::sessionBus().registerObject(
         "/", QString::fromStdString(serviceName), this,
         QDBusConnection::ExportAllSlots);
@@ -41,7 +40,6 @@ SharingService::SharingService(
                    });
     QDBusReply<QString> response = serviceInterface.call(
         "RegisterService", QString::fromStdString(serviceName), qt.toList());
-    std::cout << "success" << std::endl;
 }
 
 int SharingService::start() { return app.exec(); }
