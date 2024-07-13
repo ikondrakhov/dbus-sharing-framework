@@ -5,7 +5,6 @@ PROJECT(share_service_lib_example)
 SET(SOURCES server.cpp)
 
 FIND_PACKAGE(Qt5DBus)
-FIND_PACKAGE(sharing_service_lib)
 
 ADD_EXECUTABLE(${PROJECT_NAME} ${SOURCES})
 
