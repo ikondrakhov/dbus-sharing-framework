@@ -21,7 +21,8 @@ QString ShareService::OpenFile(QString path) {
     std::cout << fileFormat.toStdString() << std::endl;
     const auto& services = this->formatToService[fileFormat];
     if (services.size() == 0) {
-        return "Error: No service to open file with format";
+        return QString("Error: No service to open file with format %1")
+            .arg(fileFormat);
     }
     return this->OpenFileUsingService(path, services[0]);
 }
