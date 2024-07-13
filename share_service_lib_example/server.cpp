@@ -11,23 +11,21 @@
 #include "Request.hpp"
 #include "SharingService.hpp"
 
-void process(const std::string &path) { std::cout << path << std::endl; };
+void process(const std::string& path) { std::cout << path << std::endl; };
 
-int main(int argc, char *argv[]) {
-  // QCoreApplication app(argc, argv);
-  const std::vector<std::string> supportedFormats = {"mp4", "mov", "mp3"};
+int main(int argc, char* argv[]) {
+    const std::vector<std::string> supportedFormats = {"mp4", "mov", "mp3"};
 
-  const auto onOpenFile = [](const std::string &path, const Request &req) {
-    if (!std::filesystem::exists(path)) {
-      req.sendErrorResponse("File doesn't exist");
-    } else {
-      process(path);
-      req.sendSuccessResponse();
-    }
-  };
+    const auto onOpenFile = [](const std::string& path, const Request& req) {
+        if (!std::filesystem::exists(path)) {
+            req.sendErrorResponse("File doesn't exist");
+        } else {
+            process(path);
+            req.sendSuccessResponse();
+        }
+    };
 
-  SharingService service(argc, argv, "com.example.mediaplayer",
-                         supportedFormats, onOpenFile);
-  service.start();
-  // return app.exec();
+    SharingService service(argc, argv, "com.example.mediaplayer",
+                           supportedFormats, onOpenFile);
+    service.start();
 }
