@@ -19,9 +19,9 @@ class SharingService : public QObject {
 
   public:
     SharingService(
-        int argc, char** argv, std::string serviceName,
-        std::vector<std::string> supportedFormats,
-        std::function<void(const std::string&, const Request&)> callback);
+        std::string serviceName, std::vector<std::string> supportedFormats,
+        std::function<void(const std::string&, const Request&)> callback,
+        int argc = 0, char* argv[] = nullptr);
 
     int start();
 

@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
         }
     };
 
-    SharingService service(argc, argv, "com.example.mediaplayer",
-                           supportedFormats, onOpenFile);
+    SharingService service("com.example.mediaplayer", supportedFormats,
+                           onOpenFile);
     service.start();
 }

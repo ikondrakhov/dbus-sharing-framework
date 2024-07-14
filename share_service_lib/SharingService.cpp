@@ -8,9 +8,9 @@
 #include "Request.hpp"
 
 SharingService::SharingService(
-    int argc, char** argv, std::string serviceName,
-    std::vector<std::string> supportedFormats,
-    std::function<void(const std::string&, const Request&)> cb)
+    std::string serviceName, std::vector<std::string> supportedFormats,
+    std::function<void(const std::string&, const Request&)> cb, int argc,
+    char* argv[])
     : callback(cb), app(argc, argv) {
 
     // Check to see if the QDBus can be connected to
