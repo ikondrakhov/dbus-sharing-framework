@@ -3,8 +3,6 @@
 #include <QtDBus/QtDBus>
 #include <iostream>
 
-ShareService::ShareService() {}
-
 QString ShareService::RegisterService(QString name,
                                       QStringList supportedFormats) {
     for (const QString& format : supportedFormats) {

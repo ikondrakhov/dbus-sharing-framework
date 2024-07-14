@@ -9,21 +9,18 @@
 #include <iostream>
 
 class ShareService : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
-public:
-  ShareService();
+  public slots:
+    QString RegisterService(QString name, QStringList supportedFormats);
+    QString OpenFile(QString path);
+    QString OpenFileUsingService(QString path, QString service);
 
-public slots:
-  QString RegisterService(QString name, QStringList supportedFormats);
-  QString OpenFile(QString path);
-  QString OpenFileUsingService(QString path, QString service);
+  private:
+    std::map<QString, std::vector<QString>> formatToService;
+    std::map<QString, QStringList> serviceToFormats;
 
-private:
-  std::map<QString, std::vector<QString>> formatToService;
-  std::map<QString, QStringList> serviceToFormats;
-
-  QString GetFileFormat(QString filename);
+    QString GetFileFormat(QString filename);
 };
 
 #endif // SHARE_SERVICE_H
