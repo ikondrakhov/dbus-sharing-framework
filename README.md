@@ -37,3 +37,24 @@ server - будет содержать файлы для запуска серв
 client - файлы для запуска клиента
 share_service_lib - файлы с динамической библиотекой
 share_service_lib_example - файлы с примером использования библиотеки
+
+## Запуск примера
+
+Для запуска примера сначала запустите сервер:
+```
+./server/server
+```
+
+Затем запустите пример:
+```
+./share_service_lib_example/share_service_lib_example
+```
+
+Для отправки запроса можно использовать gdbus:
+```
+gdbus call -e -d com.example.mediaplayer -o / -m com.example.mediaplayer.OpenFile /home/user/Documents/video.mp4
+```
+или
+```
+gdbus call -e -d com.system.sharing -o / -m com.system.sharing.OpenFile /home/user/Documents/video.mp4
+```
