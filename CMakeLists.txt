@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.15)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8...3.22)
 
-project(file_share)
+PROJECT(file_share)
 
-add_subdirectory(server)
-add_subdirectory(client)
-add_subdirectory(share_service_lib)
-add_subdirectory(share_service_lib_example)
+ADD_SUBDIRECTORY(server)
+ADD_SUBDIRECTORY(client)
+ADD_SUBDIRECTORY(share_service_lib)
+ADD_SUBDIRECTORY(share_service_lib_example)
