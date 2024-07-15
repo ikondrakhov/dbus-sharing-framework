@@ -8,7 +8,6 @@
 void Request::sendErrorResponse(const QString& msg) const {
     QDBusMessage response_msg =
         this->_msg.createErrorReply(QDBusError::NotSupported, msg);
-    response_msg << msg;
     QDBusConnection::sessionBus().send(response_msg);
 }
 
